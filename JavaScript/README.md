@@ -8,6 +8,8 @@
 - [null은 원시자료형인가?](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#null이란?)
 - [같은 클래스에 서로다른 문자열 넣기](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#each활용법)
 - [동일 객체를 복사하는 방법](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#동일한_객체_복사_하는_방법)
+- [배열 메소드](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#배열_메소드)
+- [블록 스코프](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#블록_스코프)
 ---
 # DOM_Tree
 
@@ -173,5 +175,43 @@
 	//{color : 'red'}
 
 	이렇게 하면 car의 내용을 변경해도 secondcar에는 영향을 주지 않는다.
+            
+ ---
+ 
+# 배열_메소드
+
+###   -코드
+
+	const test1 = ['hi', 'hello', 'hello2']
+
+	test1.push('hello3')
+	//맨뒤 인덱스에 hello3를 추가한다.
+	//['hi', 'hello', 'hello2','hello3']
+
+
+	test1.unshift('hi0')
+	//맨앞 인덱스에 'hi0'를 추가한다.
+	//['hi0', 'hi', 'hello', 'hello2','hello3']
+
+	test1.pop()
+	//맨뒤 인덱스를 제거한다.
+	//['hi0', 'hi', 'hello', 'hello2']
+	
+
+	test1.shift()
+	//맨앞 인덱스 하나 제거
+	//['hi', 'hello', 'hello2']
+            
+ ---
+ 
+# 블록_스코프
+
+###   -
+
+	함수 스코프가 함수 생성시마다 새로운 스코프가 생성되는 것을 의미한다면, 
+	블록 스코프는 말 그대로 블록 {}이 생성될 때마다 
+	새로운 스코프가 형성되는 것을 의미한다. 
+	원래 자바스크립트는 함수 스코프를 따르지만, 
+	let과 const 키워드의 등장으로 블록 스코프를 형성하는 것도 가능해졌다.
             
  ---
