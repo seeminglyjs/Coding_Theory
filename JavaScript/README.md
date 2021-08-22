@@ -10,6 +10,10 @@
 - [동일 객체를 복사하는 방법](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#동일한_객체_복사_하는_방법)
 - [배열 메소드](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#배열_메소드)
 - [블록 스코프](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#블록_스코프)
+- [함수 스코프](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#함수_스코프)
+- [스코프와 컨텍스트](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#스코프와_컨텍스트)
+- [이벤트 핸들러(event handler)](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#event_handler)
+- [Closure](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#Closure)
 ---
 # DOM_Tree
 
@@ -206,7 +210,7 @@
  
 # 블록_스코프
 
-###   -
+###   -정의
 
 	함수 스코프가 함수 생성시마다 새로운 스코프가 생성되는 것을 의미한다면, 
 	블록 스코프는 말 그대로 블록 {}이 생성될 때마다 
@@ -215,3 +219,208 @@
 	let과 const 키워드의 등장으로 블록 스코프를 형성하는 것도 가능해졌다.
             
  ---
+
+# 함수_스코프
+
+###   -정의
+
+	function a() {
+  	var secret = '12345'; 
+	}
+	secret; // ReferenceError
+ 
+
+	함수를 만들고, 그 안에 변수를 저장하면, 
+	이 경우 함수 생성과 동시에 함수에 대한 	새로운 실행 컨텍스트가 생성이 되고, 
+	이 실행 컨텍스트 내부에 존재하는 
+	변수 환경(variable environment)에 변수가 저장된다. 
+
+	따라서 함수 외부에서 함수내부 변수에 접근하려고 할 경우 
+	스코프가 다르기 때문에 해당 변수에 접근이 불가능하다.
+	(함수 외부는 global scope이고, 
+	함수 내부는 a 함수의 scope인데, 
+	부모 스코프는 자식 스코프에게 
+	간섭할 수가 없기 때문에 접근이 불가능한 것이다.)
+            
+ ---
+ 
+# 스코프와 컨텍스트
+
+###   -스코프(scope)
+
+	함수가 실행될 때, 
+	함수 내에서 변수에 대한 접근이 어떻게 되는지를 나타내는 용어이다.
+	(함수의 실행 컨텍스트 내에서의 변수 환경이 무엇인지) 
+	스코프는 함수를 기반으로 한 용어이다.
+
+###   -컨텍스트(context) 
+
+	this 키워드의 값이 무엇인지를 나타내는 용어이다. 
+	현재 실행 컨텍스트 내에서 어떤 객체를 참조하고 있는지를 의미한다. 
+	컨텍스트는 객체를 기반으로 한 용어이다.           
+ ---
+ 
+ # 스코프와 컨텍스트
+
+###   -정의와 코드
+	
+	특정 요소에서 발생하는 이벤트를 처리하기 위해서는 
+	이벤트 핸들러(event handler)라는 함수를 작성하여 연결해야만 합니다.
+
+	이벤트 핸들러가 연결된 특정 요소에서 지정된 타입의 이벤트가 발생하면, 
+	웹 브라우저는 연결된 이벤트 핸들러를 실행합니다.
+
+
+	$(function() {
+
+	    $("button").on({             // 모든 <button>요소에
+
+		mouseenter: function() { // mouseenter 이벤트를 설정함.
+
+		    $("#text").append("마우스가 버튼 위로 진입했어요!<br>");
+
+		},
+
+		click: function() {      // click 이벤트를 설정함.
+
+		    $("#text").append("마우스가 버튼을 클릭했어요!<br>");
+
+		},
+
+		mouseleave: function() { // mouseleave 이벤트를 설정함.
+
+		    $("#text").append("마우스가 버튼 위에서 빠져나갔어요!<br>");
+
+		}
+
+	    });
+
+	});   
+ ---
+ 
+# Closure
+
+###   -정의
+
+	Closure(클로저)는 두 개의 함수로 만들어진 객체의 한 종류이며, 
+	내부 함수가 익명 함수로 되어 외부 함수의 반환값으로 사용됩니다.
+
+	이 클로저를 통해서 자바스크립트에는 없는 
+	비공개(private) 속성/메소드, 
+	공개 속성/메소드를 구현할 수 있는 방안을 마련할 수 있다.
+	
+###	-클로저 생성하기
+		다음은 클로저가 생성되는 조건이다.
+
+		내부 함수가 익명 함수로 되어 외부 함수의 반환값으로 사용된다.
+		내부 함수는 외부 함수의 실행 환경(execution environment)에서 실행된다.
+		내부 함수에서 사용되는 변수 x 는 외부 함수의 변수 스코프에 있다.
+
+
+	function outer() {
+	  var name = `closure`;
+	  function inner() {
+	    console.log(name);
+	  }
+	  inner();
+	}
+	outer();
+	// console> closure
+
+	outer함수를 실행시키는 context에는 name이라는 변수가 존재하지 않는다는 것을 확인할 수 있다. 비슷한 맥락에서 코드를 조금 변경해볼 수 있다.
+
+	-----------------------------------------------------------
+	var name = `Warning`;
+	function outer() {
+	  var name = `closure`;
+	  return function inner() {
+	    console.log(name);
+	  };
+	}
+
+	var callFunc = outer();
+	callFunc();
+	// console> closure
+	위 코드에서 callFunc를 클로저라고 한다. callFunc 호출에 의해 name이라는 값이 console 에 찍히는데, 
+	찍히는 값은 Warning이 아니라 closure라는 값이다. 즉, outer 함수의 context 에 속해있는 변수를 참조하는 것이다. 
+	여기서 outer함수의 지역변수로 존재하는 name변수를 free variable(자유변수)라고 한다.
+
+	이처럼 외부 함수 호출이 종료되더라도 외부 함수의 지역 변수 및 변수 스코프 객체의 체인 관계를 유지할 수 있는 구조를 클로저라고 한다. 
+	보다 정확히는 외부 함수에 의해 반환되는 내부 함수를 가리키는 말이다.
+
+	Reference
+	TOAST meetup - 자바스크립트의 스코프와 클로저
+
+
+	-------------추가 예제-------------------------------------------------
+
+	다음은 조금 더 흥미로운 예제인 makeAdder 함수이다:
+
+	function makeAdder(x) {
+	  var y = 1;
+	  return function(z) {
+	    y = 100;
+	    return x + y + z;
+	  };
+	}
+
+	var add5 = makeAdder(5);
+	var add10 = makeAdder(10);
+	//클로저에 x와 y의 환경이 저장됨
+
+	console.log(add5(2));  // 107 (x:5 + y:100 + z:2)
+	console.log(add10(2)); // 112 (x:10 + y:100 + z:2)
+	//함수 실행 시 클로저에 저장된 x, y값에 접근하여 값을 계산
+
+	이 예제에서 단일 인자 x를 받아서 새 함수를 반환하는 함수 makeAdder(x)를 정의했다. 반환되는 함수는 단일 인자 z를 받아서 x와 y와 z의 합을 반환한다.
+
+	본질적으로 makeAdder는 함수를 만들어내는 공장이다. 
+	이는 makeAdder함수가 특정한 값을 인자로 가질 수 있는 함수들을 리턴한다는 것을 의미한다. 
+	위의 예제에서 add5, add10 두 개의 새로운 함수들을 만들기 위해 makeAdder함수 공장을 사용했다. 
+	하나는 매개변수 x에 5를 더하고 다른 하나는 매개변수 x에 10을 더한다.
+
+	add5와 add10은 둘 다 클로저이다. 이들은 같은 함수 본문 정의를 공유하지만 서로 다른 맥락(어휘)적 환경을 저장한다. 
+	함수 실행 시 add5의 맥락적 환경에서 클로저 내부의 x는 5 이지만 add10의 맥락적 환경에서 x는 10이다. 
+	또한 리턴되는 함수에서 초기값이 1로 할당된 y에 접근하여 y값을 100으로 변경한 것을 볼 수 있다. 
+	(물론 x값도 동일하게 변경 가능하다.) 
+	이는 클로저가 리턴된 후에도 외부함수의 변수들에 접근 가능하다는 것을 보여주는 포인트이며 
+	클로저에 단순히 값 형태로 전달되는 것이 아니라는 것을 의미한다.
+
+
+	-------------추가 예제-------------------------------------------------
+
+	클로저를 이용해서 프라이빗 메소드 (private method) 흉내내기
+	자바와 같은 몇몇 언어들은 메소드를 프라이빗으로 선언할 수 있는 기능을 제공한다. 
+	이는 같은 클래스 내부의 다른 메소드에서만 그 메소드들을 호출할 수 있다는 의미이다.
+
+	자바스크립트는 태생적으로는 이런 방법을 제공하지 않지만 클로저를 이용하여 프라이빗 메소드를 흉내내는 것이 가능하다. 
+	프라이빗 메소드는 코드에 제한적인 접근만을 허용한다는 점 뿐만 아니라 전역 네임 스페이스를 관리하는 강력한 방법을 제공하여 
+	불필요한 메소드가 공용 인터페이스를 혼란스럽게 만들지 않도록 한다.
+
+	아래 코드는 프라이빗 함수와 변수에 접근하는 퍼블릭 함수를 정의하기 위해 클로저를 사용하는 방법을 보여준다. 
+	이렇게 클로저를 사용하는 것을 모듈 패턴이라 한다.
+
+	var counter = (function() {
+	  var privateCounter = 0;
+	  function changeBy(val) {
+	    privateCounter += val;
+	  }
+	  return {
+	    increment: function() {
+	      changeBy(1);
+	    },
+	    decrement: function() {
+	      changeBy(-1);
+	    },
+	    value: function() {
+	      return privateCounter;
+	    }
+	  };
+	})();
+
+	console.log(counter.value()); // logs 0
+	counter.increment();
+	counter.increment();
+	console.log(counter.value()); // logs 2
+	counter.decrement();
+	console.log(counter.value()); // logs 1
