@@ -7,7 +7,7 @@
 - [객체리터럴](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#객체리터럴)
 - [null은 원시자료형인가?](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#null이란?)
 - [같은 클래스에 서로다른 문자열 넣기](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#each활용법)
-- [동일 객체를 복사하는 방법](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#동일한 객체 복사 하는 방법)
+- [동일 객체를 복사하는 방법](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#동일한_객체_복사_하는_방법)
 ---
 # DOM_Tree
 
@@ -156,7 +156,7 @@
             
  ---
  
-# 동일한 객체 복사 하는 방법
+# 동일한_객체_복사_하는_방법
 
 ###   -코드
 
