@@ -4,7 +4,7 @@
 - [자바스크립트 BOM [브라우저 객체 모델(BrowserObjectModel)]](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#BOM)
 - [자바스크립트 core(ECMAScript)](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#CORE)
 - [let 과 const를 사용하는 이유](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#let_const)
-- [async 와 await 알아보기 ](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#async/await)
+- [async 와 await 알아보기 ](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#async_await)
 - [$(document).ready() 와 $(window).load() 의 차이](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#document_ready/window_load)
 - [CDN 이란?](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#CDN)
 - [객체리터럴](https://github.com/seeminglyjs/Coding_Theory/edit/main/JavaScript/#객체리터럴)
@@ -117,7 +117,7 @@
 
 --- 
 
-# async/await
+# async_await
 
 ###    - 정의
      
