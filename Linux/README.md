@@ -84,6 +84,78 @@
   기본 정책은 policy ACCEPT , policy DROP 으로 설정할 수 있다.
   일반적으로 기본정책은 모든 패킷에 대해 DROP을 설정하고 특별히 지정된 포트와 IP주소등에 대해 ACCEPT를 수행하게 만든다.
 
+---
+
+  8) iptables 출력
+  Iptables의 룰셋을 확인할때 아래와 같이 하면 보기 더 편리하다.
+
+```
+BASH
+iptables -nL
+
+  Chain INPUT (policy DROP)
+  target     prot opt source               destination
+  ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0
+  ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED
+  ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:22
+  ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:53
+  ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0           udp dpt:53
+  ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:80
+  ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:443
+  ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:3306
+
+  Chain FORWARD (policy DROP)
+  target     prot opt source               destination
+
+  Chain OUTPUT (policy ACCEPT)
+  target     prot opt source               destination
+```
+
+아래와 같이 각 룰셋의 적용순서까지 확인 가능한 방법도 있다.
+
+```
+BASH
+iptables -nL --line-numbers
+
+  Chain INPUT (policy DROP)
+  num  target     prot opt source               destination
+  1    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0
+  2    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED
+  3    ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:22
+  4    ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:53
+  5    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0           udp dpt:53
+  6    ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:80
+  7    ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:443
+  8    ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:3306
+
+  Chain FORWARD (policy DROP)
+  num  target     prot opt source               destination
+
+  Chain OUTPUT (policy ACCEPT)
+  num  target     prot opt source               destination
+```
+
+```
+BASH
+iptables -L -v
+
+  Chain INPUT (policy DROP 1626 packets, 214K bytes)
+   pkts bytes target     prot opt in     out     source               destination
+      0     0 ACCEPT     all  --  lo     any     anywhere             anywhere
+    944  194K ACCEPT     all  --  any    any     anywhere             anywhere            state RELATED,ESTABLISHED
+      0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere            tcp dpt:ssh
+      0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere            tcp dpt:domain
+      4   245 ACCEPT     udp  --  any    any     anywhere             anywhere            udp dpt:domain
+      6   304 ACCEPT     tcp  --  any    any     anywhere             anywhere            tcp dpt:http
+      0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere            tcp dpt:https
+      2    88 ACCEPT     tcp  --  any    any     anywhere             anywhere            tcp dpt:mysql
+
+  Chain FORWARD (policy DROP 0 packets, 0 bytes)
+   pkts bytes target     prot opt in     out     source               destination
+
+  Chain OUTPUT (policy ACCEPT 179 packets, 22190 bytes)
+   pkts bytes target     prot opt in     out     source               destination
+```
 
 
 출처: https://webdir.tistory.com/170 [WEBDIR]
