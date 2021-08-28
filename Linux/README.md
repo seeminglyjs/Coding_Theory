@@ -31,7 +31,7 @@
    * --source (-s) : 출발지 IP주소나 네트워크와의 매칭
    * --destination (-d) : 목적지 ip주소나 네트워크와의 매칭
    * --protocol (-p) : 특정 프로토콜과의 매칭
-   * --in-interface (i) : 입력 인테페이스
+   * --in-interface (-i) : 입력 인테페이스
    * --out-interface (-o) : 출력 인터페이스
    * --state : 연결 상태와의 매칭
    * --string : 애플리케이션 계층 데이터 바이트 순서와의 매칭
