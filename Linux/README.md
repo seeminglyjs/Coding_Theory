@@ -1,5 +1,6 @@
 # Linux
 - [iptables](https://github.com/seeminglyjs/Coding_Theory/edit/main/iptables/#iptables)
+- [find사용법](https://github.com/seeminglyjs/Coding_Theory/edit/main/iptables/#find)
 ---
 # iptables
 
@@ -161,3 +162,47 @@ iptables -L -v
 
 출처: https://webdir.tistory.com/170 [WEBDIR]
 ---    
+
+# find
+
+###    - 정의
+          find 명령만 입력하면 현재 디렉토리(.)에 있는 파일을 찾는다.(하위 디렉토리. 숨겨진 파일도 표시)
+          ex) find /etc -name "ssh*" -> etc에 있는 파일중 ssh로 시작하는 모든 파일을 찾는다.
+
+###    - name 옵션
+          찾는 파일의 이름을 지정할때 사용한다.
+
+###    - type 옵션
+         파일의 형식을 지정해서 찾을 수 있다.
+         ex) find /etc -name "test" -type d -> etc 폴더에 test라는 파일인데 그중 디렉토리인 것만 찾아라
+
+###    - size 옵션
+          파일의 사이즈를 지정해서 검색을 할 수 있다.
+          ex) find /etc -size +10M -> 사이즈가 10M 이상인 파일들을 찾아라
+
+###    - empty 옵션         
+          빈파일을 찾을 때 사용한다.
+          ex) find . -empty
+         
+###    - maxdepth 옵션    
+          maxdepth 옵션으로 서브 디렉토리 검색 깊이를 지정한다.
+          ex) find /etc -maxdepth 2 -name 'x*' -> 최대 깊이가 2인 파일중 이름이 x로 시작하는 모든 파일을 찾아라
+          
+###    - newer 옵션 
+          newer 옵션 뒤에 적힌 파일보다 최근에 변경된 파일을 검색한다.
+          ex) find . -newer game.py -> 최근에 변경된  game.py파일을 찾는다.
+          
+###    - exec 옵션 
+          exec 옵션 뒤에 명령어를 입력하여 검색한 파일로 부가적인 작업을 수행할 수 있다.
+          (검색된 파일이 {} 위치에 입력되어 처리된다.)
+           ex)find . -empty -exec ls -l {} \; -> 빈파일들을 찾아 나열한다.
+           ex)find . -empty -exec rm {} \;   -> 빈파일들을 찾아 삭제한다.
+           
+###    - 2>/dev/null 옵션 
+          'Permission denied'와 같은 오류를 무시하기 위해 리다이렉션을 사용할 수 있다.
+          (sudo 명령을 사용할 수 없는 경우에 효과적이다.)
+          ex)find / -name "test*" 2>/dev/null -> 권한 오류를 무시하고 test라고 시작하는 이름의 파일을 찾는다.
+      
+          
+
+
