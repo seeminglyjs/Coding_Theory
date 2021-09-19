@@ -1,6 +1,9 @@
 # Linux
 - [iptables](https://github.com/seeminglyjs/Coding_Theory/edit/main/iptables/#iptables)
 - [find사용법](https://github.com/seeminglyjs/Coding_Theory/edit/main/iptables/#find)
+- [Package manager](https://github.com/seeminglyjs/Coding_Theory/edit/main/iptables/#Package_manager)
+- [file download](https://github.com/seeminglyjs/Coding_Theory/edit/main/iptables/#file_download)
+- [ps와 grep](https://github.com/seeminglyjs/Coding_Theory/edit/main/iptables/#ps_grep)
 ---
 # iptables
 
@@ -204,7 +207,40 @@ iptables -L -v
           (sudo 명령을 사용할 수 없는 경우에 효과적이다.)
           ex)find / -name "test*" 2>/dev/null -> 권한 오류를 무시하고 test라고 시작하는 이름의 파일을 찾는다.
           출처 https://withcoding.com/97
-      
           
+          
+ ---    
 
+# Package_manager
+
+###    - apt
+          apt-get update; -> apt패키지 매니저를 최신상태로 다운로드한다.
+          apt-cache search htop -> htop 패키지들을 캐시에서 찾는다.
+          apt-get install htop ->  -> htop 패키지를 설치한다.
+
+          (htop 은 윈도우의 작업관리자 같은 소프트웨어이다.)
+
+          apt-get upgrade htop -> htop 프로그램을 최신화한다.
+          apt-get upgrade -> apt로 설치한 모든 패키지를 최신화한다.
+          apt -get remove htop -> htop 를 삭제한다.
+
+ ---
+
+# file_download
+
+###    - wget
+          wget [url정보] -> url에 있는 파일을 다운로드한다.
+          mv dowload hello.jpeg -> 파일이름을 hello.jpeg 로 변경한다.
+
+          wget -O hello.jpeg url정보] -> 파일이름을 hello.jpeg 로 저장한다.
+          
+ ---
+
+# ps_grep
+
+###    - 예제
+          grep [찾고싶은내용] [찾고싶은내용을가지고있는파일]
+          ls --help | grep [찾고싶은내용] ->ls --help에 파이프(|) 로 연결해서 [찾고싶은내용] 을 가져온다.
+          ls --help | grep [찾고싶은내용] | grep [찾고싶은내용] -> 파이프는 계속 연결해서 사용해서 사용할 수 있다.
+          ps aux | grep apache -> 실행되고 있는 프로세스중 아파치라는 이름이 포함된 프로세스만 가져온다. 
 
