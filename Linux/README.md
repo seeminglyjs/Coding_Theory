@@ -90,6 +90,7 @@
 
 #### iptables 출력
   Iptables의 룰셋을 확인할때 아래와 같이 하면 보기 더 편리하다.
+  출처: https://webdir.tistory.com/170 [WEBDIR]
 
 ```
 BASH
@@ -160,7 +161,7 @@ iptables -L -v
 ```
 
 
-출처: https://webdir.tistory.com/170 [WEBDIR]
+
 ---    
 
 # find
@@ -202,7 +203,6 @@ iptables -L -v
           'Permission denied'와 같은 오류를 무시하기 위해 리다이렉션을 사용할 수 있다.
           (sudo 명령을 사용할 수 없는 경우에 효과적이다.)
           ex)find / -name "test*" 2>/dev/null -> 권한 오류를 무시하고 test라고 시작하는 이름의 파일을 찾는다.
-          
           출처 https://withcoding.com/97
       
           
