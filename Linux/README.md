@@ -1,9 +1,12 @@
 # Linux
-- [iptables](https://github.com/seeminglyjs/Coding_Theory/edit/main/iptables/#iptables)
-- [find사용법](https://github.com/seeminglyjs/Coding_Theory/edit/main/iptables/#find)
-- [Package manager](https://github.com/seeminglyjs/Coding_Theory/edit/main/iptables/#Package_manager)
-- [file download](https://github.com/seeminglyjs/Coding_Theory/edit/main/iptables/#file_download)
-- [ps와 grep](https://github.com/seeminglyjs/Coding_Theory/edit/main/iptables/#ps_grep)
+- [iptables](https://github.com/seeminglyjs/Coding_Theory/edit/main/Linux/#iptables)
+- [IO Redirection](https://github.com/seeminglyjs/Coding_Theory/edit/main/Linux/#IO_Redirection)
+- [SHELL](https://github.com/seeminglyjs/Coding_Theory/edit/main/Linux/#SHELL)
+- [SHELL Script](https://github.com/seeminglyjs/Coding_Theory/edit/main/Linux/#SHELL_Script)
+- [Package manager](https://github.com/seeminglyjs/Coding_Theory/edit/main/Linux/#Package_manager)
+- [file download](https://github.com/seeminglyjs/Coding_Theory/edit/main/Linux/#file_download)
+- [find사용법](https://github.com/seeminglyjs/Coding_Theory/edit/main/Linux/#find)
+- [ps와 grep](https://github.com/seeminglyjs/Coding_Theory/edit/main/Linux/#ps_grep)
 ---
 # iptables
 
@@ -242,5 +245,65 @@ iptables -L -v
           grep [찾고싶은내용] [찾고싶은내용을가지고있는파일]
           ls --help | grep [찾고싶은내용] ->ls --help에 파이프(|) 로 연결해서 [찾고싶은내용] 을 가져온다.
           ls --help | grep [찾고싶은내용] | grep [찾고싶은내용] -> 파이프는 계속 연결해서 사용해서 사용할 수 있다.
-          ps aux | grep apache -> 실행되고 있는 프로세스중 아파치라는 이름이 포함된 프로세스만 가져온다. 
+          ps aux | grep apache -> 실행되고 있는 프로세스중 아파치라는 이름이 포함된 프로세스만 가져온다.
+          
+ ---
 
+# IO_Redirection
+
+###    - OutPut
+          ls -l > result.txt -> ls -l 의 내용을 result.txt에 저장한다.
+          > 기호는 아웃풋 리다렉이션을 의미하는 기호이다.
+          
+          rm rename2.txt > result.txt -> 파일이 없다는 전제하에 실행하면 
+          result.txt에 에러메시지가 저장되지않고 콘솔에 나타난다. 즉 리타이렉션 되지 않는다.
+          이는 > standard output만 리다이렉션하기 때문이다. 
+          [ 1> == standard ] 를 의미한다. 에러메시지를 저장하고 싶으면 
+          [ rm rename2.txt 2> result.txt ]  와 같은 형식으로 > 리다이렉션 기호앞에 2를 붙여주면 된다.
+
+          rm test.txt 1> result.txt 2> error.log -> 스탠다드 아웃풋 과 스탠다드 에러 리다이렉션을 붙여서 사용할 수도 있다.
+          
+          ls -al >> result.xt -> append되어서 기존의 데이터에 추가된다.
+          >> 리다이렉션을 하는데 리다이렉션하는 내용을 append한다
+
+          ls -al > /dev/null	->  /dev/null 은 유닉스계열에서 쓰레기통과 같은 역할을 한다.
+
+###    - InPut
+          cat < hello.txt -> hello.txt에 저장되어 있는 내용을 입력으로 받는다.
+          cat hello.txt -> 위와 결과는 동일하나 동작은 다르다.
+          
+          
+---
+
+# SHELL
+
+###    - 기초이론
+          hardware > kernel > shell > application
+
+          echo "hello" -> echo는 뒤에들어오는 문자를 화면에 출력하는 명령어이다.
+          echo $0	->  사용하는 쉘의 종료를 확인하는 명령어	ex) -bash , -zsh 등등으로 나올 것이다.
+
+          -bash 와 -zsh는 부모가 같아 동작하는 기능이 비슷하다. 다만 zsh는 bash의 확장판 정도라고 생각하며 되며,
+          추가적인 기능을 사용할 수 있다.
+          
+---
+
+# SHELL_Script 
+
+###    - 정의
+          명령어들을 한번에 실행할 수 있는 하나의 각본이라고 볼 수 있다.
+
+###    - 예제
+          
+```
+          #!/bin/bash	-> 현재 쉘스크립트를 실행시켰을때 보는 첫줄(무조건 적는 약속) bin 밑에 있는 bash라는 프로그램으로 실행된다는 의미
+
+          if ! [ -d bak ]; then		-> 현재 디렉토리에 bak 디렉토리가 존재안하는지 여부 체크
+	     mkdir bak	-> 없으면 bak디렉토리를 만든다.
+          fi			-> 조건문의 종료 fi
+
+          cp *.log bak		-> 현재 디렉토리에 log 파일들을 bak 디렉토리에 저장한다.
+
+
+          ./backup			-> 현재 디렉토리에 backup이라는 파일을 실행시킨다.	./ -> 현재 디렉토리라는 의미
+```
