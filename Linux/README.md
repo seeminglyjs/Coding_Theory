@@ -7,6 +7,7 @@
 - [file download](https://github.com/seeminglyjs/Coding_Theory/edit/main/Linux/#file_download)
 - [find사용법](https://github.com/seeminglyjs/Coding_Theory/edit/main/Linux/#find)
 - [ps와 grep](https://github.com/seeminglyjs/Coding_Theory/edit/main/Linux/#ps_grep)
+- [background](https://github.com/seeminglyjs/Coding_Theory/edit/main/Linux/#background)
 ---
 # iptables
 
@@ -305,5 +306,57 @@ iptables -L -v
           cp *.log bak		-> 현재 디렉토리에 log 파일들을 bak 디렉토리에 저장한다.
 
 
-          ./backup			-> 현재 디렉토리에 backup이라는 파일을 실행시킨다.	./ -> 현재 디렉토리라는 의미
+          ./backup		-> 현재 디렉토리에 backup이라는 파일을 실행시킨다.	./ -> 현재 디렉토리라는 의미
 ```
+---
+
+# background 
+
+###    - 정의
+	 리눅스 내에서 하나의 프로그램이 아닌 여러 프로그램을 실행하기 위해서 필요하다.
+
+###    - jobs
+	 현재 백그라운드 내에서 실행중인 프로그램들을 보여준다. 명령어 사용시 아래와 같이 나타난다.
+	 [1]	Stopped		test1
+	 [2]-	Stopped		test2
+	 [3]+	Stopped		test3
+	 
+	 + 는 fg 명령어를 옵션없이 사용시 나타나는 다음 프로그램이다. 
+	 
+	 
+###    - ctrl + z
+	 현재 실행중인 프로그램을 백그라운드로 보낸다.
+	 
+###    - fg %1
+	 백그라운드에 있는 프로그램을 다시 그라운드로 올린다.
+	 %뒤에 숫자는 stopped 앞에 붙은 숫자이며 해당 숫자 프로그램이 그라운드로 올라온다.
+	 
+###    - kill %1
+	 현재 실행중인 백그라운드 프로그램을 종료시킬 때 사용하게 되는 명령어이다.
+	 % 기호로 명시적으로 종료하고 싶은 프로그램을 나타내는 것이 꼭 필요하다.
+	 
+---
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	
