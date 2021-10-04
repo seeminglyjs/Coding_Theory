@@ -24,4 +24,5 @@
       
 ### X forword for 참고 예제
      https://sg-choi.tistory.com/540
+     https://linked2ev.github.io/java/2019/05/22/JAVA-1.-java-get-clientIP/
 ---
